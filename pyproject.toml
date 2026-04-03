@@ -1,0 +1,49 @@
+[project]
+name = "devnet-assoc"
+version = "0.1.0"
+description = "Cisco DevNet Associate 200-901 study labs"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    # Data formats & web
+    "pyyaml>=6.0",
+    "xmltodict>=0.13",
+    "flask>=3.0",
+    "jinja2>=3.1",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+
+    # Cisco SDKs
+    "meraki>=1.45",
+    "dnacentersdk>=2.7",
+    "webexteamssdk>=1.6",
+    "virl2-client>=2.7",
+
+    # Network automation
+    "netmiko>=4.3",
+    "paramiko>=3.4",
+    "ncclient>=0.6.15",
+    "pyang>=2.6",
+    "lxml>=5.0",
+    "ansible-core>=2.16",
+
+    # Security & crypto
+    "cryptography>=42.0",
+    "pyjwt>=2.8",
+
+    # Utilities
+    "rich>=13.0",
+    "ipython>=8.0",
+    "prettytable>=3.10",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.4", "mypy>=1.10", "pytest>=8.0"]
+pyats = ["pyats[full]>=24.0"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["labs"]
+python_files = ["test_*.py"]
