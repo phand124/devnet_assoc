@@ -1,0 +1,32 @@
+name: baseline-test
+
+mgmt:
+  network: clab-mgmt
+  ipv4-subnet: 192.168.100.0/27
+
+topology:
+  nodes:
+
+    r1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.100.10
+
+    r2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.100.11
+
+    sw1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.16.01a
+      mgmt-ipv4: 192.168.100.20
+
+  links:
+    - endpoints: ["r1:Ethernet0/1", "sw1:Ethernet0/1"]
+    - endpoints: ["r2:Ethernet0/2", "sw1:Ethernet0/2"]
+    - endpoints: ["r1:Ethernet0/2", "r2:Ethernet0/1"]
+
+ #[R1]---Eth0/1---[SW1]---Eth0/2---[R2]
+ # |                                 |
+ # +----------Eth0/2--Eth0/1--------+

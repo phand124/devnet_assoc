@@ -2,7 +2,7 @@
 name = "devnet-assoc"
 version = "0.1.0"
 description = "Cisco DevNet Associate 200-901 study labs"
-requires-python = ">=3.10,<3.13"
+requires-python = ">=3.12, <4.0"
 dependencies = [
     # Data formats & web
     "pyyaml>=6.0",
