@@ -10,5 +10,8 @@ endpoint = "people/"
 response = requests.get(base_url + endpoint)
 data = response.json()
 
-print(data[0]['name'])
+#print(data[0]['name'])
 
+for d in data:
+    if d['name'] == "Leia Organa":
+        print (d['name'])
