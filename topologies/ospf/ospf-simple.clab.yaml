@@ -1,0 +1,30 @@
+name: ospf-simple
+
+mgmt:
+  network: clab-mgmt
+  ipv4-subnet: 192.168.100.0/24
+
+topology:
+    nodes:
+      r1:
+        kind: cisco_iol
+        image: vrnetlab/cisco_iol:17.16.01a
+        mgmt-ipv4: 192.168.100.10
+      r2:
+        kind: cisco_iol
+        image: vrnetlab/cisco_iol:17.16.01a
+        mgmt-ipv4: 192.168.100.20
+      r3:
+        kind: cisco_iol
+        image: vrnetlab/cisco_iol:17.16.01a
+        mgmt-ipv4: 192.168.100.30
+      r4:
+        kind: cisco_iol
+        image: vrnetlab/cisco_iol:17.16.01a
+        mgmt-ipv4: 192.168.100.40
+
+    links:
+        - endpoints: ["r1:Ethernet0/2", "r2:Ethernet0/1"]
+        - endpoints: ["r1:Ethernet0/3", "r3:Ethernet0/1"]
+        - endpoints: ["r2:Ethernet0/3", "r3:Ethernet0/3"]
+        - endpoints: ["r3:Ethernet1/1", "r4:Ethernet0/3"]
