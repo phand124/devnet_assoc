@@ -19,3 +19,16 @@ The class definition will also allow for loading of the nested `.env` that shoul
 API work is consolidated within a directory within `scripts/`
 Using the Star Wars API, https://swapi.info/api, built a simple script to use the `requests` module. 
 
+### Flask example ###
+A simple API using Flask, includes the following routes:
+ - A basic GET to act as a Hello, World and returns a 200 - OK. 
+ - A POST that includes data field requirements.
+ - A protected route that uses Basic Auth. 
+
+Postman was used for quickly testing and visualizing the API. 
+The POST incorporates a separate Class. Format the JSON in the body of the message as raw data, and ensure the Content-Type is set to application/json 
+This has some error checking, will return a 201 - Created on success, 400 - Bad Request for incomplete fields, and 500 - Internal Server Errror for any other exceptions. 
+
+The protected route has multiple parts in order to walk through all the steps required to check authentication. 
+You essential wrap the checks in a decorator function that is able to be passed to the specified route. 
+
