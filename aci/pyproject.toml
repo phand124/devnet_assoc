@@ -1,0 +1,15 @@
+[project]
+name = "aci-labs"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "acitoolkit @ git+https://github.com/datacenter/acitoolkit.git",
+    "requests",
+    "urllib3",
+    "python-dotenv",
+    "six>=1.17.0",
+]
+
+
+[tool.uv.sources]
+acitoolkit = { git = "https://github.com/datacenter/acitoolkit.git" }

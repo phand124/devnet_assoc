@@ -1,14 +1,16 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
-# ──────────────────────────────────────────────
-# Device connection variables — update these
-# ──────────────────────────────────────────────
-DEVICE_IP = "devnetsandboxiosxec8k.cisco.com"       # Target Cisco XE device IP or hostname
-USERNAME   = "admin"             # RESTCONF username
-PASSWORD   = "password"     # RESTCONF password
-PORT       = 443                 # Default RESTCONF port (443 for HTTPS)
-# ──────────────────────────────────────────────
+load_dotenv()
+DEVICE_IP = os.getenv("DEVICE_IP")
+PORT = os.getenv("PORT")
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
+
+if not all ([DEVICE_IP, PORT, USERNAME, PASSWORD]):
+    raise EnvironmentError("Missing one or more required environment variables in .env")
 
 BASE_URL = f"https://{DEVICE_IP}:{PORT}/restconf/data"
 

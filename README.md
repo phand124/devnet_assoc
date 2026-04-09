@@ -54,4 +54,11 @@ JSON needs to be specified in the headers, `Content-Type` to send and `Accept` t
 Since RESTCONF uses a RESTful API, you can use Postman for queries. 
 `https://<IP>/restconf/data/module:container` in genral as the base URL. 
 
-Used Devnet Sandbox to poll the Always On Cat8000 unit.
+Used Devnet Sandbox to poll the Always On Cat8000 unit. - 443 was blocked outisde of the box, so this was a failure.
+
+## ACI and APIC ##
+Set up a `uv workspace` in order to load and work with the ACIToolkit SDK in the corresponding directory of the project. 
+Have to link the main `pyproject.toml` to the one created within the workspace directory. 
+
+#WIP - unable to connect to sandbox when labbing.
+Want to get tenants up to 15, and then create a tenant with a hand ful of MOs, then cleanup. 

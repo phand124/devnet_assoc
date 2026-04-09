@@ -12,7 +12,6 @@ build/
 .mypy_cache/
 .ruff_cache/
 .pytest_cache/
-# uv.lock is INTENTIONALLY committed — do not add it here
 
 # ─────────────────────────────────────────────
 # Secrets and environment
@@ -27,7 +26,6 @@ build/
 vault_password
 vault_pass.txt
 .vault_pass
-# Keep the example template
 !.env.example
 
 # ─────────────────────────────────────────────
@@ -61,7 +59,7 @@ topologies/cml/*.yaml
 !topologies/cml/.gitkeep
 
 # ─────────────────────────────────────────────
-# IOL / network images — never commit binaries
+# IOL / network images 
 # ─────────────────────────────────────────────
 *.bin
 *.iso

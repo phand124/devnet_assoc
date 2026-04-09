@@ -1,0 +1,50 @@
+Traceback (most recent call last):
+  File "/home/potato/Projects/devnet_assoc/aci/get_tenants.py", line 41, in <module>
+    session = get_session()
+  File "/home/potato/Projects/devnet_assoc/aci/get_tenants.py", line 18, in get_session
+    response = session.login()
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/acitoolkit/acisession.py", line 676, in login
+    resp = self._send_login(timeout)
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/acitoolkit/acisession.py", line 646, in _send_login
+    ret = self.push_to_apic(login_url, data=data, timeout=timeout)
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/acitoolkit/acisession.py", line 809, in push_to_apic
+    resp = self.session.post(post_url, data=json.dumps(data, sort_keys=True), verify=self.verify_ssl,
+                             timeout=timeout, proxies=self._proxies)
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/requests/sessions.py", line 640, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/potato/Projects/devnet_assoc/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+KeyboardInterrupt

@@ -47,3 +47,6 @@ target-version = "py311"
 [tool.pytest.ini_options]
 testpaths = ["labs"]
 python_files = ["test_*.py"]
+
+[tool.uv.workspace]
+members = ["aci"]
