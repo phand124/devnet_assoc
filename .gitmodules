@@ -1,0 +1,3 @@
+[submodule "lab-config"]
+	path = lab-config
+	url = https://github.com/phand124/lab-config.git
