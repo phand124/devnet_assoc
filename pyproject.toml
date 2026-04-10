@@ -49,4 +49,7 @@ testpaths = ["labs"]
 python_files = ["test_*.py"]
 
 [tool.uv.workspace]
-members = ["aci"]
+members = [
+    "aci",
+    "lab-config",
+]

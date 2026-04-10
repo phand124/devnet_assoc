@@ -8,12 +8,11 @@ Create a simple topology file for containerlab.
 Then create a script to pull from the file, and connect to devices to pull the version info. 
 Script uses netmiko and yaml modules. 
 
-### Refactor - LabTopology Class module ###
+### Refactor - Class-based module ###
 Working on refactor to streamline lab topology work. 
-Class will contain methods for loading the correct topology file from the root of the project, parsing the YAML for the nodes, confirming the lab is running with `clab inspect`, and for establishing a connection. 
-Baseline test used netmiko, most work will need to be built using NETCONF / RESTCONF. 
-The connection method should check if the nodes are an IOL image or XE image, for using the appropriate connection method. 
-The class definition will also allow for loading of the nested `.env` that should be in the same directory as the `.clab.yaml`.
+Added as a submodule to the main repo, lab-config, using `uv init --lib` to get the workspace created correctly. Working framework is built into the corresponding README.md
+LabTopology, LabDevice, and LabConfigurator are initial classes to breakout the methods to work with. 
+Goal would be to later have some pieces of config that can be applied programatically, even with `netmiko`.
 
 ## API Work ##
 API work is consolidated within a directory within `scripts/`

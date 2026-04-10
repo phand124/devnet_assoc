@@ -49,7 +49,6 @@ clab-*/
 *.clab.yml.bak
 # Keep topology definitions themselves
 !*.clab.yml
-!clab-lab  #sub module for python workflow
 
 # ─────────────────────────────────────────────
 # CML generated topologies
