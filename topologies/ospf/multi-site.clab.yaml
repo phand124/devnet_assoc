@@ -1,0 +1,176 @@
+name: multi-site
+
+mgmt:
+  network: clab-mgnt
+  ipv4-subnet: 192.168.110.0/24
+
+topology:
+  defaults:
+    kind: cisco_iol
+
+  kinds:
+    cisco_iol:
+      image: vrnetlab/cisco_iol:17.16.01a
+
+  nodes:
+    core1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.110.11
+
+    core2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.110.12
+
+    hq-dist:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.110.13
+
+    hq-acc1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.16.01a
+      mgmt-ipv4: 192.168.110.14
+
+    hq-acc2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.16.01a
+      mgmt-ipv4: 192.168.110.15
+
+    br1-wan:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.110.21
+
+    br1-dist:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.110.22
+
+    br1-acc1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.16.01a
+      mgmt-ipv4: 192.168.110.23
+
+    br1-acc2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.16.01a
+      mgmt-ipv4: 192.168.110.23
+
+    br2-wan:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.110.31
+
+    br2-dist:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+      mgmt-ipv4: 192.168.110.32
+
+    br2-acc1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.16.01a
+      mgmt-ipv4: 192.168.110.33
+
+    br2-acc2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.16.01a
+      mgmt-ipv4: 192.168.110.33
+
+    hq-client1:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.41
+
+    hq-serv1:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.42
+
+    hq-client2:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.43
+
+    hq-serv2:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.44
+
+    br1-client1:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.51
+
+    br1-serv1:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.52
+
+    br1-client2:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.53
+
+    br1-serv2:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.54
+
+    br2-client1:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.61
+
+    br2-serv1:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.62
+
+    br2-client2:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.63
+
+    br2-serv2:
+      kind: linux
+      image: alpine:3.19
+      mgmt-ipv4: 192.168.110.64
+
+    edgeshark:
+      kind: linux
+      image: ghcr.io/siemens/edgeshark/edgeshark:latest
+      mgmt-ipv4: 192.168.110.200
+      binds:
+        - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+        - "5001:5001"
+  links:
+    - endpoints: ["core1:Ethernet0/1", "core2:Ethernet0/1"]
+    - endpoints: ["core1:Ethernet0/2", "hq-dist:Ethernet0/1"]
+    - endpoints: ["core2:Ethernet0/2", "hq-dist:Ethernet0/2"]
+    - endpoints: ["core1:Ethernet0/3", "br1-wan:Ethernet0/1"]
+    - endpoints: ["core2:Ethernet0/3", "br2-wan:Ethernet0/1"]
+    - endpoints: ["hq-dist:Ethernet0/3", "hq-acc1:Ethernet0/1"]
+    - endpoints: ["hq-dist:Ethernet1/0", "hq-acc2:Ethernet0/1"]
+    - endpoints: ["hq-acc1:Ethernet0/2", "hq-client1:eth1"]
+    - endpoints: ["hq-acc1:Ethernet0/3", "hq-serv1:eth1"]
+    - endpoints: ["hq-acc2:Ethernet0/2", "hq-client2:eth1"]
+    - endpoints: ["hq-acc2:Ethernet0/3", "hq-serv2:eth1"]
+
+    - endpoints: ["br1-wan:Ethernet0/2", "br1-dist:Ethernet0/1"]
+    - endpoints: ["br1-dist:Ethernet0/2", "br1-acc1:Ethernet0/1"]
+    - endpoints: ["br1-dist:Ethernet0/3", "br1-acc2:Ethernet0/1"]
+    - endpoints: ["br1-acc1:Ethernet0/2", "br1-client1:eth1"]
+    - endpoints: ["br1-acc1:Ethernet0/3", "br1-serv1:eth1"]
+    - endpoints: ["br1-acc2:Ethernet0/2", "br1-client2:eth1"]
+    - endpoints: ["br1-acc2:Ethernet0/3", "br1-serv2:eth1"]
+
+    - endpoints: ["br2-wan:Ethernet0/2", "br2-dist:Ethernet0/1"]
+    - endpoints: ["br2-dist:Ethernet0/2", "br2-acc1:Ethernet0/1"]
+    - endpoints: ["br2-dist:Ethernet0/3", "br2-acc2:Ethernet0/1"]
+    - endpoints: ["br2-acc1:Ethernet0/2", "br2-client1:eth1"]
+    - endpoints: ["br2-acc1:Ethernet0/3", "br2-serv1:eth1"]
+    - endpoints: ["br2-acc2:Ethernet0/2", "br2-client2:eth1"]
+    - endpoints: ["br2-acc2:Ethernet0/3", "br2-serv2:eth1"]
