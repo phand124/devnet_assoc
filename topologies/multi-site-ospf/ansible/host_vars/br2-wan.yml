@@ -1,0 +1,13 @@
+#host_vars/br2-wan.yml
+
+interfaces:
+  - name: Ethernet0/1
+    description: TO-core2
+    ipv4: 10.100.2.2/30
+    ospf_area: 0
+  - name: Ethernet0/2
+    description: TO-br2-dist
+    ipv4: 10.100.2.5/30
+    ospf_area: 2
+
+ospf_router_id: 10.255.2.1

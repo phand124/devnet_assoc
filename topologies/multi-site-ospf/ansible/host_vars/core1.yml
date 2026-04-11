@@ -1,0 +1,19 @@
+# host_vars/core1.yml
+
+interfaces:
+  - name: Ethernet0/1
+    description: TO-core2
+    ipv4: 10.100.0.1/30
+  - name: Ethernet0/2
+    description: TO-hq-dist
+    ipv4: 10.100.0.5/30
+  - name: Ethernet0/3
+    description: TO-br1-wan
+    ipv4: 10.100.1.1/30
+
+ospf_router_id: 10.255.0.1
+ospf_area: 0
+ospf_active_interfaces:
+  - Ethernet0/1
+  - Ethernet0/2
+  - Ethernet0/3
