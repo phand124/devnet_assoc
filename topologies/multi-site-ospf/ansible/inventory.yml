@@ -1,0 +1,141 @@
+all:
+  children:
+    routers:
+      vars:
+        ansible_connection: ansible.netcommon.network_cli
+        ansible_network_os: cisco.ios.ios
+        ansible_become: true
+        ansible_become_method: enable
+      children:
+        core:
+          hosts:
+            core1:
+              ansible_host: 192.168.110.11
+            core2:
+              ansible_host: 192.168.110.12
+        hq_dist:
+          hosts:
+            hq-dist:
+              ansible_host: 192.168.110.13
+        branch_wan:
+          hosts:
+            br1-wan:
+              ansible_host: 192.168.110.21
+            br2-wan:
+              ansible_host: 192.168.110.31
+        branch_dist:
+          hosts:
+            br1-dist:
+              ansible_host: 192.168.110.22
+            br2-dist:
+              ansible_host: 192.168.110.32
+
+    switches:
+      vars:
+        ansible_connection: ansible.netcommon.network_cli
+        ansible_network_os: cisco.ios.ios
+        ansible_become: true
+        ansible_become_method: enable
+      children:
+        hq_access:
+          hosts:
+            hq-acc1:
+              ansible_host: 192.168.110.14
+            hq-acc2:
+              ansible_host: 192.168.110.15
+        br1_access:
+          hosts:
+            br1-acc1:
+              ansible_host: 192.168.110.23
+            br1-acc2:
+              ansible_host: 192.168.110.24
+        br2_access:
+          hosts:
+            br2-acc1:
+              ansible_host: 192.168.110.33
+            br2-acc2:
+              ansible_host: 192.168.110.34
+
+    endpoints:
+      vars:
+        ansible_connection: community.docker.docker
+        ansible_user: root
+        ansible_python_interpreter: /usr/bin/python3
+        ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+      children:
+        clients:
+          hosts:
+            hq-client1:
+              ansible_host: clab-multi-site-hq-client1
+              data_ip: 10.10.10.10
+              data_prefix: 24
+              data_gw: 10.10.10.1
+              data_iface: eth1
+            hq-client2:
+              ansible_host: clab-multi-site-hq-client2
+              data_ip: 10.10.30.10
+              data_prefix: 24
+              data_gw: 10.10.30.1
+              data_iface: eth1
+            br1-client1:
+              ansible_host: clab-multi-site-br1-client1
+              data_ip: 10.20.10.10
+              data_prefix: 24
+              data_gw: 10.20.10.1
+              data_iface: eth1
+            br1-client2:
+              ansible_host: clab-multi-site-br1-client2
+              data_ip: 10.20.30.10
+              data_prefix: 24
+              data_gw: 10.20.30.1
+              data_iface: eth1
+            br2-client1:
+              ansible_host: clab-multi-site-br2-client1
+              data_ip: 10.30.10.10
+              data_prefix: 24
+              data_gw: 10.30.10.1
+              data_iface: eth1
+            br2-client2:
+              ansible_host: clab-multi-site-br2-client2
+              data_ip: 10.30.30.10
+              data_prefix: 24
+              data_gw: 10.30.30.1
+              data_iface: eth1
+        servers:
+          hosts:
+            hq-serv1:
+              ansible_host: clab-multi-site-hq-serv1
+              data_ip: 10.10.20.10
+              data_prefix: 24
+              data_gw: 10.10.20.1
+              data_iface: eth1
+            hq-serv2:
+              ansible_host: clab-multi-site-hq-serv2
+              data_ip: 10.10.40.10
+              data_prefix: 24
+              data_gw: 10.10.40.1
+              data_iface: eth1
+            br1-serv1:
+              ansible_host: clab-multi-site-br1-serv1
+              data_ip: 10.20.20.10
+              data_prefix: 24
+              data_gw: 10.20.20.1
+              data_iface: eth1
+            br1-serv2:
+              ansible_host: clab-multi-site-br1-serv2
+              data_ip: 10.20.40.10
+              data_prefix: 24
+              data_gw: 10.20.40.1
+              data_iface: eth1
+            br2-serv1:
+              ansible_host: clab-multi-site-br2-serv1
+              data_ip: 10.30.20.10
+              data_prefix: 24
+              data_gw: 10.30.20.1
+              data_iface: eth1
+            br2-serv2:
+              ansible_host: clab-multi-site-br1-serv2
+              data_ip: 10.30.40.10
+              data_prefix: 24
+              data_gw: 10.30.40.1
+              data_iface: eth1
