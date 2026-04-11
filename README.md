@@ -61,3 +61,8 @@ Have to link the main `pyproject.toml` to the one created within the workspace d
 
 #WIP - unable to connect to sandbox when labbing.
 Want to get tenants up to 15, and then create a tenant with a hand ful of MOs, then cleanup. 
+
+## Cisco SD-WAN ##
+Import to Postman from [DevNet Code Exchange](https://github.com/CiscoDevNet/Postman-for-Cisco-SD-WAN.git) repo. 
+get-devices.py added from CBT, shows the session state being used with request to hold auth tokens. 
+
