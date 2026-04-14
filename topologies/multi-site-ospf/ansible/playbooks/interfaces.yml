@@ -1,0 +1,23 @@
+---
+- name: Configure router interfaces
+  hosts: routers
+  gather_facts: false
+
+  tasks:
+    - name: Configure interface state and description
+      cisco.ios.ios_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            description: "{{ item.description }}"
+            enabled: true
+        state: merged
+      loop: "{{ interfaces }}"
+
+    - name: Configure interface IP addresses
+      cisco.ios.ios_l3_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            ipv4:
+              - address: "{{ item.ipv4 }}"
+        state: merged
+      loop: "{{ interfaces }}"

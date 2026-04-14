@@ -1,0 +1,39 @@
+- name: Verify and ensure OSPF configuration on all L3 devices
+  hosts: routers
+  gather_facts: false
+  tags: ospf
+
+  tasks:
+    - name: Configure OSPF process
+      cisco.ios.ios_ospfv2:
+        config:
+          processes:
+            - process_id: "{{ ospf_process_id }}"
+              router_id: "{{ ospf_router_id }}"
+        state: merged
+
+    - name: Assign Interfaces to OSPF areas
+      cisco.ios.ios_ospf_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            address_family:
+              - afi: ipv4
+                processes:
+                  - id: "{{ ospf_process_id }}"
+                    area_id: "{{item.ospf_area }}"
+        state: merged
+      loop: "{{ interfaces }}"
+#    - name: Check OSPF process is running
+#      cisco.ios.ios_command:
+#        commands: show ip ospf
+#      register: ospf_proc
+#      failed_when: "'OSPF Router' not in ospf_proc.stdout[0]"
+#
+#    - name: Show OSPF neighbor table
+#      cisco.ios.ios_command:
+#        commands: show ip ospf neighbor
+#      register: ospf_nbrs
+#
+#    - name: Display OSPF neighbors
+#      ansible builtin.debug:
+#        msg: "{{ ospf_nbrs.stdout_lines }}"
