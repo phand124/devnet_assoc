@@ -15,7 +15,7 @@ LabTopology, LabDevice, and LabConfigurator are initial classes to breakout the 
 Goal would be to later have some pieces of config that can be applied programatically, even with `netmiko`.
 
 ## API Work ##
-API work is consolidated within a directory within `scripts/`
+API work is consolidated within a directory within `scripts/` 
 Using the Star Wars API, https://swapi.info/api, built a simple script to use the `requests` module. 
 
 ### Flask example ###
@@ -54,6 +54,12 @@ Since RESTCONF uses a RESTful API, you can use Postman for queries.
 `https://<IP>/restconf/data/module:container` in genral as the base URL. 
 
 Used Devnet Sandbox to poll the Always On Cat8000 unit. - 443 was blocked outisde of the box, so this was a failure.
+
+## NX-OS ##
+WIP for scripts for working against Nexus switches. 
+`nx-os/` directory for collection of scripts and tasks for connection against the Sandbox devices. 
+First task is to connect, pull device inventory and write to uput file using the NXOS-API REST. Sandbox launch failed, oivoted to other tasks. 
+
 
 ## ACI and APIC ##
 Set up a `uv workspace` in order to load and work with the ACIToolkit SDK in the corresponding directory of the project. 
