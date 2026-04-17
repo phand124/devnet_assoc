@@ -1,0 +1,200 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "core1",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": -100,
+        "y": -40
+      }
+    },
+    {
+      "id": "core2",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 0,
+        "y": -40
+      }
+    },
+    {
+      "id": "hq-dist",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": -60,
+        "y": 40
+      }
+    },
+    {
+      "id": "hq-acc1",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 40,
+        "y": 120
+      }
+    },
+    {
+      "id": "hq-acc2",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": -140,
+        "y": 120
+      }
+    },
+    {
+      "id": "br1-wan",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": -360,
+        "y": 20
+      }
+    },
+    {
+      "id": "br1-dist",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": -360,
+        "y": 160
+      }
+    },
+    {
+      "id": "br1-acc1",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": -300,
+        "y": 260
+      }
+    },
+    {
+      "id": "br1-acc2",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": -420,
+        "y": 260
+      }
+    },
+    {
+      "id": "br2-wan",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 380,
+        "y": 40
+      }
+    },
+    {
+      "id": "br2-dist",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 380,
+        "y": 140
+      }
+    },
+    {
+      "id": "br2-acc1",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 280,
+        "y": 240
+      }
+    },
+    {
+      "id": "br2-acc2",
+      "interfacePattern": "e0/{n}",
+      "position": {
+        "x": 440,
+        "y": 240
+      }
+    },
+    {
+      "id": "hq-client1",
+      "position": {
+        "x": 0,
+        "y": 220
+      }
+    },
+    {
+      "id": "hq-serv1",
+      "position": {
+        "x": 60,
+        "y": 220
+      }
+    },
+    {
+      "id": "hq-client2",
+      "position": {
+        "x": -160,
+        "y": 220
+      }
+    },
+    {
+      "id": "hq-serv2",
+      "position": {
+        "x": -80,
+        "y": 220
+      }
+    },
+    {
+      "id": "br1-client1",
+      "position": {
+        "x": -320,
+        "y": 400
+      }
+    },
+    {
+      "id": "br1-serv1",
+      "position": {
+        "x": -260,
+        "y": 400
+      }
+    },
+    {
+      "id": "br1-client2",
+      "position": {
+        "x": -400,
+        "y": 400
+      }
+    },
+    {
+      "id": "br1-serv2",
+      "position": {
+        "x": -460,
+        "y": 400
+      }
+    },
+    {
+      "id": "br2-client1",
+      "position": {
+        "x": 240,
+        "y": 340
+      }
+    },
+    {
+      "id": "br2-serv1",
+      "position": {
+        "x": 300,
+        "y": 340
+      }
+    },
+    {
+      "id": "br2-client2",
+      "position": {
+        "x": 400,
+        "y": 340
+      }
+    },
+    {
+      "id": "br2-serv2",
+      "position": {
+        "x": 480,
+        "y": 340
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}

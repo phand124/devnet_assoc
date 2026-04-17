@@ -1,0 +1,26 @@
+{
+  "inventory": {
+    "imdata": [
+      {
+        "error": {
+          "attributes": {
+            "code": "6",
+            "text": "Output format was not specified (possible options: .xml|.json|.bin)"
+          }
+        }
+      }
+    ]
+  },
+  "version": {
+    "imdata": [
+      {
+        "error": {
+          "attributes": {
+            "code": "6",
+            "text": "Output format was not specified (possible options: .xml|.json|.bin)"
+          }
+        }
+      }
+    ]
+  }
+}

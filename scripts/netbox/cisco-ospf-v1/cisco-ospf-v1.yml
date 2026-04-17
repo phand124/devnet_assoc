@@ -1,0 +1,335 @@
+name: cisco-ospf-v1
+description: Multi-site, HQ and two branch offices using OSPF
+mgmt_prefix: 192.168.110.0/24
+
+sites:
+  - name: hq
+    description: Headquarters
+  - name: br1
+    description: Branch 1
+  - name: br2
+    description: Branch 2
+
+devices:
+  - name: core1
+    platform: iol
+    role: router
+    site: hq
+    mgmt_ip: 192.168.110.11/24
+    image: vrnet/cisco_iol:17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+  - name: core2
+    platform: iol
+    role: router
+    site: hq
+    mgmt_ip: 192.168.110.12/24
+    image: vrnet/cisco_iol:17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+  - name: hq-dist
+    platform: iol
+    role: router
+    site: hq
+    mgmt_ip: 192.168.110.13/24
+    image: vrnet/cisco_iol:17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+      - name: Ethernet1/0
+  - name: hq-acc1
+    platform: iol
+    role: router
+    site: hq
+    mgmt_ip: 192.168.110.14/24
+    image: vrnet/cisco_iol:L2-17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+  - name: hq-acc2
+    platform: iol
+    role: router
+    site: hq
+    mgmt_ip: 192.168.110.15/24
+    image: vrnet/cisco_iol:L2-17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+
+  # HQ - Endpoints
+
+  - name: hq-client1
+    platform: linux
+    role: host
+    site: hq
+    mgmt_ip: 192.168.110.41/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: hq-serv1
+    platform: linux
+    role: server
+    site: hq
+    mgmt_ip: 192.168.110.42/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: hq-client2
+    platform: linux
+    role: host
+    site: hq
+    mgmt_ip: 192.168.110.43/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: hq-serv2
+    platform: linux
+    role: server
+    site: hq
+    mgmt_ip: 192.168.110.44/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+
+  # Branch 1
+
+  - name: br1-wan
+    platform: iol
+    role: router
+    site: br1
+    mgmt_ip: 192.168.110.21/24
+    image: vrnet/cisco_iol:17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+
+  - name: br1-dist
+    platform: iol
+    role: router
+    site: br1
+    mgmt_ip: 192.168.110.22/24
+    image: vrnet/cisco_iol:17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+
+  - name: br1-acc1
+    platform: iol
+    role: router
+    site: br1
+    mgmt_ip: 192.168.110.23/24
+    image: vrnet/cisco_iol:L2-17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+
+  - name: br1-acc2
+    platform: iol
+    role: router
+    site: br1
+    mgmt_ip: 192.168.110.24/24
+    image: vrnet/cisco_iol:L2-17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+
+  - name: br1-client1
+    platform: linux
+    role: host
+    site: br1
+    mgmt_ip: 192.168.110.51/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: br1-serv1
+    platform: linux
+    role: server
+    site: br1
+    mgmt_ip: 192.168.110.52/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: br1-client2
+    platform: linux
+    role: host
+    site: br1
+    mgmt_ip: 192.168.110.53/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: br1-serv2
+    platform: linux
+    role: server
+    site: br1
+    mgmt_ip: 192.168.110.54/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+
+  # Branch 2
+
+  - name: br2-wan
+    platform: iol
+    role: router
+    site: br2
+    mgmt_ip: 192.168.110.31/24
+    image: vrnet/cisco_iol:17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+
+  - name: br2-dist
+    platform: iol
+    role: router
+    site: br2
+    mgmt_ip: 192.168.110.32/24
+    image: vrnet/cisco_iol:17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+
+  - name: br2-acc1
+    platform: iol
+    role: router
+    site: br2
+    mgmt_ip: 192.168.110.33/24
+    image: vrnet/cisco_iol:L2-17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+
+  - name: br2-acc2
+    platform: iol
+    role: router
+    site: br1
+    mgmt_ip: 192.168.110.34/24
+    image: vrnet/cisco_iol:L2-17.16.01a
+    interfaces:
+      - name: Ethernet0/1
+      - name: Ethernet0/2
+      - name: Ethernet0/3
+
+  - name: br2-client1
+    platform: linux
+    role: host
+    site: br2
+    mgmt_ip: 192.168.110.61/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: br2-serv1
+    platform: linux
+    role: server
+    site: br2
+    mgmt_ip: 192.168.110.62/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: br2-client2
+    platform: linux
+    role: host
+    site: br1
+    mgmt_ip: 192.168.110.63/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+  - name: br2-serv2
+    platform: linux
+    role: server
+    site: br2
+    mgmt_ip: 192.168.110.64/24
+    image: alpine:3.19
+    interfaces:
+      - name: eth1
+
+links:
+  - a: core1:Ethernet0/1
+    b: core2:Ethernet0/1
+
+  - a: core1:Ethernet0/2
+    b: hq-dist:Ethernet0/1
+
+  - a: core2:Ethernet0/2
+    b: hq-dist:Ethernet0/2
+
+  # Core to Branches
+  - a: core1:Ethernet0/3
+    b: br1-wan:Ethernet0/1
+
+  - a: core2:Ethernet0/3
+    b: br2-wan:Ethernet0/1
+
+  # HQ Dist and Acc Links
+  - a: hq-dist:Ethernet0/3
+    b: hq-acc1:Ethernet0/1
+
+  - a: hq-dist:Ethernet1/0
+    b: hq-acc2:Ethernet0/1
+
+  - a: hq-acc1:Ethernet0/2
+    b: hq-client1:eth1
+
+  - a: hq-acc1:Ethernet0/3
+    b: hq-serv1:eth1
+
+  - a: hq-acc2:Ethernet0/2
+    b: hq-client2:eth1
+
+  - a: hq-acc2:Ethernet0/3
+    b: hq-serv2:eth1
+
+  # Branch 1
+  - a: br1-wan:Ethernet0/2
+    b: br1-dist:Ethernet0/1
+
+  - a: br1-dist:Ethernet0/2
+    b: br1-acc1:Ethernet0/1
+
+  - a: br1-dist:Ethernet0/3
+    b: br1-acc2:Ethernet0/1
+
+  - a: br1-acc1:Ethernet0/2
+    b: br1-client1:eth1
+
+  - a: br1-acc1:Ethernet0/3
+    b: br1-serv1:eth1
+
+  - a: br1-acc2:Ethernet0/2
+    b: br1-client2:eth1
+
+  - a: br1-acc2:Ethernet0/3
+    b: br1-serv2:eth1
+
+  # Branch 2
+  - a: br2-wan:Ethernet0/2
+    b: br2-dist:Ethernet0/1
+
+  - a: br2-dist:Ethernet0/2
+    b: br2-acc1:Ethernet0/1
+
+  - a: br2-dist:Ethernet0/3
+    b: br2-acc2:Ethernet0/1
+
+  - a: br2-acc1:Ethernet0/2
+    b: br2-client1:eth1
+
+  - a: br2-acc1:Ethernet0/3
+    b: br2-serv1:eth1
+
+  - a: br2-acc2:Ethernet0/2
+    b: br2-client2:eth1
+
+  - a: br2-acc2:Ethernet0/3
+    b: br2-serv2:eth1
